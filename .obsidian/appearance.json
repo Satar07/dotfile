@@ -1,0 +1,16 @@
+{
+  "translucency": true,
+  "theme": "system",
+  "showRibbon": false,
+  "cssTheme": "",
+  "accentColor": "#9e74ec",
+  "enabledCssSnippets": [
+    "cursor",
+    "color_header"
+  ],
+  "textFontFamily": "SF Pro,PingFang SC",
+  "monospaceFontFamily": "JetBrains Mono,Maple Mono NF CN",
+  "nativeMenus": true,
+  "baseFontSize": 16,
+  "interfaceFontFamily": "SF Pro,PingFang SC"
+}

@@ -1,0 +1,379 @@
+/* ---------------
+ * Obsidian CSS Theme Snippet
+ *
+ * Base Author: 乔诚
+ * (https://forum-zh.obsidian.md/t/topic/2994/3)
+ *
+ * Modifications by: Dexter (20220908)
+ * - Mac font compatibility (PostScript names)
+ *
+ * Additional features:
+ * - CSS Custom Properties for fonts
+ * - Unified heading fonts
+ * - Reduced heading indentation
+ * - Shifted heading styles (h2 as 'Chapter', h3 as 'Section', etc.) 
+ * - Modified table styles to a "three-line table" format 
+ * - Custom footnote styling 
+ * --------------- */
+
+/* ------------------------------------------------------------ */
+/* 字体变量 (Font Variables)
+/* ------------------------------------------------------------ */
+/*
+ * 在这里修改字体，整个文档将会自动更新。
+ * 请使用 PostScript 格式以确保跨平台兼容性。
+ */
+:root {
+    --font-song: "TimesNewRomanPSMT", "宋体-简";
+    --font-hei: "TimesNewRomanPSMT", "黑体-简";
+    --font-kai: "TimesNewRomanPSMT", "楷体-简";
+}
+
+/* ------------------------------------------------------------ */
+/* 基础样式 (Base Styles)
+/* ------------------------------------------------------------ */
+
+.theme-light .markdown-reading-view {
+  background-color: #fff;
+}
+
+/* ------------------------------------------------------------ */
+/* 通用排版 (General Typography)
+/* ------------------------------------------------------------ */
+
+strong {
+  font-family: var(--font-hei) !important;
+  font-weight: bold;
+}
+
+p {
+  font-family: var(--font-song) !important;
+  text-decoration-line: none;
+  margin: 10px 0px;
+  line-height: 120%;
+  text-indent: 2em;
+  font-size: 20px;
+}
+
+/* ------------------------------------------------------------ */
+/* 标题 (h1-h6)
+/* - 已移除自动编号
+/* - 样式层级下移 (h2 对应“章”, h3 对应“节”)
+/* ------------------------------------------------------------ */
+
+/* h1 (一级标题) - 普通大标题 */
+h1 {
+  font-family: var(--font-hei) !important;
+  font-size: 38px !important;
+  font-weight: bold !important; 
+  text-align: center;
+}
+
+h1::before {
+  content: none;
+}
+
+/* h2 (二级标题) - "章" 级别样式 */
+h2 {
+  font-family: var(--font-hei) !important;
+  font-size: 42px !important;
+  font-weight: bold !important; 
+  text-align: center;
+}
+
+h2::before {
+  content: none;
+}
+
+/* h3 (三级标题) - "节" 级别样式 */
+h3 {
+  font-family: var(--font-hei) !important;
+  font-size: 35px !important;
+  font-weight: bold !important;
+  text-align: left;
+}
+
+h3::before {
+  content: none;
+}
+
+/* h4 (四级标题) */
+h4 {
+  font-family: var(--font-hei) !important;
+  font-size: 25px !important;
+  font-weight: bold !important;
+  text-align: left;
+  text-indent: 1em;
+}
+
+h4::before {
+  content: none;
+}
+
+/* h5 (五级标题) */
+h5 {
+  font-family: var(--font-song) !important;
+  font-size: 23px !important;
+  font-weight: normal !important;
+  text-align: left;
+  text-indent: 2em;
+}
+
+h5::before {
+  content: none;
+}
+
+/* h6 (六级标题) */
+h6 {
+  font-family: var(--font-song) !important;
+  font-weight: normal !important; 
+  font-size: 20px !important;
+  text-align: left !important;
+  text-indent: 3em;
+}
+
+/* ------------------------------------------------------------ */
+/* 图像 (Images)
+/* ------------------------------------------------------------ */
+
+.image-embed {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ------------------------------------------------------------ */
+/* 列表 (Lists)
+/* ------------------------------------------------------------ */
+
+ul,
+ol {
+  font-family: var(--font-song) !important;
+  text-decoration-line: none;
+  margin: 10px 0px;
+  line-height: 120%;
+  font-size: 20px;
+}
+
+/* ------------------------------------------------------------ */
+/* 标准表格 (Standard Tables) - 三线表样式
+/* ------------------------------------------------------------ */
+
+.markdown-preview-view table {
+  width: 100%;
+  margin-top: 12px;
+  border-collapse: collapse;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
+.markdown-preview-view td,
+.markdown-preview-view th {
+  border: none;
+  font-size: 14px;
+  padding: 8px 10px;
+  background-color: transparent !important;
+}
+
+/* Light theme table */
+.theme-light .markdown-preview-view th {
+  border-bottom: 2px solid #000;
+  border-top: none;
+  font-weight: 800;
+  background-color: transparent !important;
+}
+
+.theme-light .markdown-preview-view tr:nth-child(odd),
+.theme-light .markdown-preview-view tr:nth-child(even) {
+  background-color: transparent !important;
+}
+
+.theme-light .markdown-preview-view tr:last-child {
+  border-bottom: none;
+}
+
+/* Dark theme table */
+.theme-dark .markdown-preview-view th {
+  border-bottom: 2px solid #ccc;
+  border-top: none;
+  font-weight: 800;
+  background-color: transparent !important;
+}
+
+.theme-dark .markdown-preview-view tr:nth-child(odd),
+.theme-dark .markdown-preview-view tr:nth-child(even) {
+  background-color: transparent !important;
+}
+
+.theme-dark .markdown-preview-view tr:last-child {
+  border-bottom: none;
+}
+
+
+/* ------------------------------------------------------------ */
+/* 引用与图像表格 (Blockquotes & Image Tables)
+/* ------------------------------------------------------------ */
+
+.markdown-preview-view blockquote th {
+  vertical-align: bottom;
+}
+
+.markdown-preview-view blockquote th,
+blockquote tr {
+  background-color: #00000000 !important;
+  border: none !important;
+}
+
+blockquote tr td {
+  vertical-align: top;
+}
+
+blockquote table tbody tr:first-child {
+  font-family: var(--font-song) !important;
+  font-weight: bold;
+}
+
+blockquote {
+  border: none !important;
+  padding: 0px;
+  margin: 20px 50px;
+}
+
+blockquote p {
+  font-family: var(--font-kai) !important;
+}
+
+.theme-light blockquote p {
+  color: #5f5f5f;
+}
+
+.theme-dark blockquote p {
+  color: #a1a1a1;
+}
+
+/* ------------------------------------------------------------ */
+/* 脚注与链接 (Footnotes & Links) - 论文格式
+/* ------------------------------------------------------------ */
+
+.footnote-link {
+  color: #000000 !important;
+  font-size: 14px !important;
+  line-height: normal !important;
+  font-weight: bold;
+  text-decoration: none !important;
+}
+
+sup {
+  vertical-align: super;
+  font-size: 0.75em;
+}
+
+section.footnotes {
+  margin-top: 30px;
+  border-top: none;
+  padding-top: 0;
+}
+
+section.footnotes hr {
+  display: none !important;
+}
+
+.markdown-preview-view .footnotes ol {
+  counter-reset: footnote-counter;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.markdown-preview-view .footnotes ol li {
+  display: flex;
+  align-items: baseline;
+  list-style-type: none !important;
+  font-family: var(--font-song) !important;
+  font-size: 16px;
+  line-height: 120%;
+  margin-bottom: 8px;
+  position: relative;
+  padding-left: 0;
+  text-indent: 0;
+}
+
+.markdown-preview-view .footnotes ol li::before {
+  content: "[" counter(footnote-counter) "] ";
+  counter-increment: footnote-counter;
+  font-weight: bold;
+  color: #000000;
+  margin-right: 0.25em;
+  flex-shrink: 0;
+  font-family: var(--font-song);
+}
+
+.markdown-preview-view .footnotes ol li p {
+  margin: 0 !important;
+  padding: 0 !important;
+  text-indent: 0 !important;
+}
+
+.footnote-return {
+  display: none !important;
+}
+
+a.footnote-backref {
+    display: none !important;
+}
+
+/* ------------------------------------------------------------ */
+/* 代码、链接、水平线 (Code, Links, HR)
+/* ------------------------------------------------------------ */
+
+pre,
+code,
+.token,
+a {
+  background-color: #00000000 !important;
+  text-shadow: none !important;
+  text-decoration-line: none !important;
+}
+
+.markdown-preview-view a {
+  color: #0e639c !important;
+  text-decoration: none !important;
+}
+
+.theme-light a,
+.theme-light code {
+  color: #2e3338 !important;
+}
+
+.theme-dark a,
+.theme-dark code {
+  color: #4a90e2 !important;
+}
+
+.theme-dark .markdown-preview-view a {
+  color: #4a90e2 !important;
+}
+
+/* 确保脚注链接(正文中的上标)保持黑色加粗 */
+.footnote-link {
+  color: #000000 !important;
+  font-size: 14px !important;
+  line-height: normal !important;
+  font-weight: bold;
+  text-decoration: none !important;
+}
+
+pre {
+  border: solid 1px #000;
+}
+
+code[class*="language-"] {
+  border-left: solid 5px #888 !important;
+  border-radius: 0px;
+  line-height: 1 !important;
+}
+
+.markdown-preview-view hr {
+  border: none;
+  border-top: 1px solid;
+  border-color: #000;
+}

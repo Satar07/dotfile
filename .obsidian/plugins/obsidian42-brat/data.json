@@ -1,0 +1,23 @@
+{
+  "pluginList": [
+    "stefanopagliari/bibnotes"
+  ],
+  "pluginSubListFrozenVersion": [
+    {
+      "repo": "stefanopagliari/bibnotes",
+      "version": "latest"
+    }
+  ],
+  "themesList": [],
+  "updateAtStartup": false,
+  "updateThemesAtStartup": false,
+  "enableAfterInstall": true,
+  "loggingEnabled": false,
+  "loggingPath": "BRAT-log",
+  "loggingVerboseEnabled": false,
+  "debuggingMode": false,
+  "notificationsEnabled": true,
+  "personalAccessToken": "",
+  "selectLatestPluginVersionByDefault": false,
+  "allowIncompatiblePlugins": false
+}

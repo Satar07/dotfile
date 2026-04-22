@@ -1,0 +1,89 @@
+/* ---------------
+ * 标题颜色 CSS - 仅限编辑视图 (v2)
+ *
+ * v2 更新:
+ * - 增加 .markdown-reading-view 的显式重置 (color: inherit)
+ * - 确保样式只在 .markdown-source-view 中应用
+ * --------------- */
+
+/* 深色模式 */
+.theme-dark {
+    --h1-color: rgb(243, 139, 168);
+    --h2-color: rgb(250, 179, 135);
+    --h3-color: rgb(249, 226, 175);
+    --h4-color: rgb(166, 227, 161);
+    --h5-color: rgb(116, 199, 236);
+    --h6-color: rgb(180, 190, 254);
+    --inline-title-color: #ffffff;
+}
+
+/* 浅色模式 */
+.theme-light {
+    --h1-color: rgb(210, 15, 57);
+    --h2-color: rgb(254, 100, 11);
+    --h3-color: rgb(223, 142, 29);
+    --h4-color: rgb(64, 160, 43);
+    --h5-color: rgb(32, 159, 181);
+    --h6-color: rgb(114, 135, 253);
+    --inline-title-color: #000000;
+}
+
+/* --- 1. 仅在编辑视图中应用颜色 --- */
+
+.markdown-source-view h1 {
+    color: var(--h1-color);
+}
+.markdown-source-view h2 {
+    color: var(--h2-color);
+}
+.markdown-source-view h3 {
+    color: var(--h3-color);
+}
+.markdown-source-view h4 {
+    color: var(--h4-color);
+}
+.markdown-source-view h5 {
+    color: var(--h5-color);
+}
+.markdown-source-view h6 {
+    color: var(--h6-color);
+}
+.markdown-source-view .inline-title {
+    color: var(--inline-title-color);
+}
+
+/* --- 2. 强制在阅读视图中重置颜色 (关键步骤) --- */
+/*
+ * 使用 "inherit" 来恢复为主题的默认标题颜色
+ * .markdown-reading-view 和 .markdown-preview-view 都包括
+ * 以确保完全覆盖
+ */
+
+.markdown-reading-view h1,
+.markdown-preview-view h1 {
+    color: inherit;
+}
+.markdown-reading-view h2,
+.markdown-preview-view h2 {
+    color: inherit;
+}
+.markdown-reading-view h3,
+.markdown-preview-view h3 {
+    color: inherit;
+}
+.markdown-reading-view h4,
+.markdown-preview-view h4 {
+    color: inherit;
+}
+.markdown-reading-view h5,
+.markdown-preview-view h5 {
+    color: inherit;
+}
+.markdown-reading-view h6,
+.markdown-preview-view h6 {
+    color: inherit;
+}
+.markdown-reading-view .inline-title,
+.markdown-preview-view .inline-title {
+    color: inherit;
+}

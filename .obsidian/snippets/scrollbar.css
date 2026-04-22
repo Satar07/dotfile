@@ -1,0 +1,18 @@
+/* scrollbar.css */
+::-webkit-scrollbar {
+    width: 6px !important;
+    height: 6px !important;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(150, 150, 150, 0.4) !important;
+    border-radius: 3px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(150, 150, 150, 0.7) !important;
+}

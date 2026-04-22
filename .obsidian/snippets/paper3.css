@@ -1,0 +1,412 @@
+/* ---------------
+ * Obsidian CSS Theme Snippet for Academic Papers (LaTeX Style)
+ *
+ * Base Author: 乔诚
+ * (https://forum-zh.obsidian.md/t/topic/2994/3)
+ *
+ * LaTeX Style Modifications by: GitHub Copilot (based on thesis-uestc.cls)
+ * Date: 2025-11-03
+ *
+ * Key Features based on thesis-uestc.cls:
+ * - Font stacks mirroring LaTeX `fontspec` setup (Times New Roman + CJK fonts).
+ * - Precise line height (1.391) and paragraph indentation (2em).
+ * - Hierarchical heading styles (font size, weight, spacing) from LaTeX.
+- "Three-line table" style inspired by `booktabs` package.
+ * - Academic footnote style with custom separator line.
+ * - CSS Custom Properties for easy font management.
+ * --------------- */
+
+/* ------------------------------------------------------------ */
+/*  1. 字体变量 (Font Variables) & 根样式
+/* ------------------------------------------------------------ */
+/*
+ * 在这里修改字体，整个文档将会自动更新。
+ * 请使用字体的 PostScript 名称以确保跨平台兼容性。
+ * (例如 "Times New Roman" -> "TimesNewRomanPSMT")
+ */
+:root {
+    --font-song:
+        "Times New Roman", "TimesNewRomanPSMT", "SimSun", "STSong", "Songti SC",
+        "宋体", "宋体-简", serif;
+    --font-hei: "SimHei", "STHeiti", "Heiti SC", "黑体", "黑体-简", sans-serif;
+    --font-kai: "KaiTi", "STKaiti", "Kaiti SC", "楷体", "楷体-简", serif;
+
+    /* LaTeX line spacing */
+    --line-height-body: 1.391;
+}
+
+.theme-light .markdown-reading-view,
+.markdown-preview-view {
+    background-color: #fff;
+    /* Base font size, approximating LaTeX's 12pt */
+    font-size: 16px;
+}
+
+/* ------------------------------------------------------------ */
+/*  2. 通用排版 (General Typography)
+/* ------------------------------------------------------------ */
+
+/* 正文段落 */
+p {
+    font-family: var(--font-song) !important;
+    font-size: 1em; /* 16px */
+    line-height: var(--line-height-body);
+    text-indent: 2em; /* 对应 LaTeX 24pt 缩进 */
+    margin-top: 0;
+    margin-bottom: 1em;
+    text-decoration-line: none;
+}
+
+/* 粗体使用黑体 */
+strong,
+b {
+    font-family: var(--font-hei) !important;
+    font-weight: bold;
+}
+
+/* ------------------------------------------------------------ */
+/*  3. 标题 (h1-h6) - 参照 thesis-uestc.cls
+/* ------------------------------------------------------------ */
+
+/* h1 (一级标题) - 文档主标题 */
+h1 {
+    font-family: var(--font-hei) !important;
+    font-size: 2.375em !important; /* 38px */
+    font-weight: bold !important;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 1.5em;
+    line-height: 1.2;
+}
+
+/* h2 (二级标题) - "章" 级别样式 */
+h2 {
+    font-family: var(--font-hei) !important;
+    font-size: 1.5em !important; /* 24px, 接近 LaTeX 15pt on screen */
+    font-weight: bold !important;
+    text-align: center;
+    margin-top: 2em;
+    margin-bottom: 1.5em; /* 模拟 \titlespacing {18pt} */
+    line-height: 1.3;
+}
+
+/* h3 (三级标题) - "节" 级别样式 */
+h3 {
+    font-family: var(--font-hei) !important;
+    font-size: 1.3em !important; /* 21px, 接近 LaTeX 14pt */
+    font-weight: bold !important;
+    text-align: left;
+    margin-top: 2em;
+    margin-bottom: 1em; /* 模拟 \titlespacing {6pt} */
+}
+
+/* h4 (四级标题) - "子节" 级别样式 */
+h4 {
+    font-family: var(--font-hei) !important;
+    font-size: 1.3em !important; /* 21px, 同h3 */
+    font-weight: bold !important;
+    text-align: left;
+    text-indent: 0;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+
+/* h5 (五级标题) */
+h5 {
+    font-family: var(--font-hei) !important;
+    font-size: 1em !important; /* 16px, 接近 LaTeX 12pt */
+    font-weight: bold !important;
+    text-align: left;
+    text-indent: 0;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+
+/* h6 (六级标题) - 不常用，作为普通强调 */
+h6 {
+    font-family: var(--font-song) !important;
+    font-weight: bold !important;
+    font-size: 1em !important;
+    text-align: left !important;
+    text-indent: 0;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+
+/* 移除标题前的默认编号 */
+h1::before,
+h2::before,
+h3::before,
+h4::before,
+h5::before,
+h6::before {
+    content: none;
+}
+
+/* ------------------------------------------------------------ */
+/*  4. 列表 (Lists)
+/* ------------------------------------------------------------ */
+
+ul,
+ol {
+    font-family: var(--font-song) !important;
+    font-size: 1em;
+    line-height: var(--line-height-body);
+    margin: 1em 0px;
+    padding-left: 2.5em; /* 保持与段落的对齐感 */
+}
+
+li {
+    margin-bottom: 0.5em;
+}
+
+li p {
+    text-indent: 0 !important; /* 列表项内的段落不首行缩进 */
+    margin-bottom: 0.5em;
+}
+
+/* ------------------------------------------------------------ */
+/*  5. 表格 (Tables) - 模拟 booktabs 三线表
+/* ------------------------------------------------------------ */
+
+.markdown-preview-view table {
+    width: auto; /* 内容决定宽度 */
+    margin: 1.5em auto; /* 上下边距，并居中 */
+    border-collapse: collapse;
+    border-top: 2px solid #000; /* 顶部粗线 (heavyrulewidth 0.9pt) */
+    border-bottom: 2px solid #000; /* 底部粗线 (heavyrulewidth 0.9pt) */
+    font-size: 0.9em; /* 14px, 接近 LaTeX \small */
+}
+
+.markdown-preview-view th,
+.markdown-preview-view td {
+    border: none; /* 移除所有内部边框 */
+    padding: 8px 12px;
+    background-color: transparent !important;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.markdown-preview-view th {
+    border-bottom: 1px solid #000; /* 表头下方细线 (lightrulewidth 0.5pt) */
+    font-family: var(--font-hei);
+    font-weight: bold;
+}
+
+/* 移除默认的斑马条纹背景 */
+.theme-light .markdown-preview-view tr:nth-child(odd),
+.theme-light .markdown-preview-view tr:nth-child(even),
+.theme-dark .markdown-preview-view tr:nth-child(odd),
+.theme-dark .markdown-preview-view tr:nth-child(even) {
+    background-color: transparent !important;
+}
+
+/* ------------------------------------------------------------ */
+/*  6. 图像 (Images) & 图表标题
+/* ------------------------------------------------------------ */
+
+.image-embed,
+.internal-embed {
+    display: block;
+    text-align: center;
+    margin-top: 1em; /* 模拟 \intextsep */
+    margin-bottom: 1em;
+}
+
+.image-embed img,
+.internal-embed img {
+    max-width: 80%; /* 限制图片最大宽度 */
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 图表注脚 (caption) */
+.image-embed .markdown-embed-link,
+.image-embed > .markdown-embed-link,
+.markdown-preview-view .image-embed > span {
+    display: block;
+    text-align: center;
+    font-family: var(--font-song);
+    font-size: 0.9em; /* 14px */
+    color: #555;
+    margin-top: 0.75em; /* 模拟 aboveskip */
+    padding: 0 42pt; /* 模拟 width=\textwidth - 84pt */
+    line-height: 1.3;
+}
+
+/* ------------------------------------------------------------ */
+/*  7. 引用 (Blockquotes)
+/* ------------------------------------------------------------ */
+
+blockquote {
+    font-family: var(--font-kai) !important;
+    border-left: 3px solid #ccc !important;
+    padding: 0.5em 1em;
+    margin: 1.5em 0;
+    color: #5f5f5f;
+}
+
+.theme-dark blockquote {
+    color: #a1a1a1;
+    border-left-color: #555 !important;
+}
+
+blockquote p {
+    font-family: inherit !important; /* 继承楷体 */
+    text-indent: 0 !important;
+    margin-bottom: 0.5em;
+}
+
+blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+/* ------------------------------------------------------------ */
+/*  8. 脚注 (Footnotes) - 模拟论文格式
+/* ------------------------------------------------------------ */
+
+/* 正文中的脚注引用上标 */
+.footnote-link {
+    color: #000000 !important;
+    font-size: 0.8em !important;
+    font-weight: bold;
+    text-decoration: none !important;
+    vertical-align: super;
+    line-height: 1 !important;
+}
+
+/* 脚注区域 */
+section.footnotes {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: none; /* 移除默认的hr */
+}
+
+/* 隐藏原始的 <hr> */
+section.footnotes hr {
+    display: none !important;
+}
+
+/* 自定义脚注分隔线 */
+section.footnotes::before {
+    content: "";
+    display: block;
+    width: 5.05cm; /* LaTeX中定义的长度 */
+    height: 0.5px; /* LaTeX 0.02cm 约等于 0.5px */
+    background-color: #000;
+    margin-left: 27pt; /* LaTeX中定义的左边距 */
+    margin-bottom: 10px; /* 分隔线与第一条脚注的距离 */
+}
+
+/* 脚注列表 */
+.markdown-preview-view .footnotes ol {
+    counter-reset: footnote-counter;
+    padding-left: 0;
+    margin-left: 27pt; /* 与分隔线对齐 */
+}
+
+/* 脚注列表项 */
+.markdown-preview-view .footnotes ol li {
+    display: flex;
+    align-items: baseline;
+    list-style-type: none !important;
+    font-family: var(--font-song) !important;
+    font-size: 0.85em; /* 13.6px, 接近 LaTeX 9pt */
+    line-height: 1.4;
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 0;
+    text-indent: 0;
+}
+
+/* 脚注编号样式 */
+.markdown-preview-view .footnotes ol li::before {
+    content: "[" counter(footnote-counter) "] ";
+    counter-increment: footnote-counter;
+    font-weight: normal;
+    color: #000000;
+    margin-right: 0.5em;
+    flex-shrink: 0;
+}
+
+/* 脚注内容中的段落 */
+.markdown-preview-view .footnotes ol li p {
+    display: inline; /* 使其与编号在同一行内流动 */
+    margin: 0 !important;
+    padding: 0 !important;
+    text-indent: 0 !important;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+/* 隐藏返回原文的箭头 */
+.footnote-return,
+a.footnote-backref {
+    display: none !important;
+}
+
+/* ------------------------------------------------------------ */
+/*  9. 其他 (Code, Links, HR)
+/* ------------------------------------------------------------ */
+
+/* 普通链接 */
+.markdown-preview-view a:not(.footnote-link) {
+    color: #0e639c !important;
+    text-decoration: none !important;
+    font-family: var(--font-song);
+}
+
+.markdown-preview-view a:hover {
+    text-decoration: underline !important;
+}
+
+.theme-dark .markdown-preview-view a:not(.footnote-link) {
+    color: #4a90e2 !important;
+}
+
+/* 代码块 */
+pre {
+    border: solid 1px #ddd;
+    padding: 1em;
+    line-height: 1.4;
+    font-size: 0.9em;
+    margin: 1.5em 0;
+    background-color: #f8f8f8 !important;
+}
+
+.theme-dark pre {
+    border-color: #444;
+    background-color: #222 !important;
+}
+
+code[class*="language-"] {
+    text-shadow: none !important;
+}
+
+/*行内代码*/
+code {
+    background-color: #eee !important;
+    color: #333 !important;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 0.9em;
+    font-family: monospace;
+    text-shadow: none !important;
+}
+
+.theme-dark code {
+    background-color: #444 !important;
+    color: #ddd !important;
+}
+
+/* 水平分割线 */
+.markdown-preview-view hr {
+    border: none;
+    border-top: 1px solid #000;
+    margin: 2em auto;
+}
+
+.theme-dark .markdown-preview-view hr {
+    border-color: #555;
+}

@@ -1,0 +1,433 @@
+/* ---------------
+ * Obsidian CSS Snippet for Academic Papers (LaTeX v2)
+ *
+ * 原始作者: 乔诚
+ * LaTeX 风格修改: Gemini (基于 thesis-uestc.cls)
+ *
+ * v2 更新 (2025-11-03):
+ * - 严格按照 thesis-uestc.cls 的 `pt` (磅) 单位重新校准所有字体大小
+ * - h2-h5 字体大小和边距精确匹配 \chapter, \section, \subsection
+ * - 表格 (table) 字体精确匹配 \small (10.5pt)
+ * - 图注 (caption) 字体精确匹配 \small (10.5pt)
+ * - 脚注 (footnote) 字体精确匹配 \footnotesize (9pt)
+ * - 修正了相关的垂直间距 (margin/padding)
+ * --------------- */
+
+/* ------------------------------------------------------------ */
+/* 1. 字体变量 (Font Variables) & 根样式
+/* ------------------------------------------------------------ */
+:root {
+    --font-song:
+        "Times New Roman", "TimesNewRomanPSMT", "SimSun", "STSong", "Songti SC",
+        "宋体", "宋体-简", serif;
+    --font-hei: "SimHei", "STHeiti", "Heiti SC", "黑体", "黑体-简", sans-serif;
+    --font-kai: "KaiTi", "STKaiti", "Kaiti SC", "楷体", "楷体-简", serif;
+
+    /* LaTeX \linespread{1.391} */
+    --line-height-body: 1.391;
+
+    /* LaTeX 基础字号 12pt (映射为 16px) */
+    --font-base-size: 16px;
+
+    /* LaTeX \small (10.5pt) */
+    --font-small-size: 0.875em; /* 10.5pt / 12pt = 0.875 */
+
+    /* LaTeX \footnotesize (9pt) */
+    --font-footnote-size: 0.75em; /* 9pt / 12pt = 0.75 */
+}
+
+.theme-light .markdown-reading-view,
+.markdown-preview-view {
+    background-color: #fff;
+    font-size: var(--font-base-size); /* 16px (12pt) */
+    color: #000;
+}
+
+/* ------------------------------------------------------------ */
+/* 2. 通用排版 (General Typography)
+/* ------------------------------------------------------------ */
+
+/* 正文段落 (12pt) */
+p {
+    font-family: var(--font-song) !important;
+    font-size: 1em; /* 16px (12pt) */
+    line-height: var(--line-height-body);
+    text-indent: 2em; /* 对应 LaTeX \parindent{24pt} (12pt * 2) */
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    text-decoration-line: none;
+}
+
+/* 粗体使用黑体 */
+strong,
+b {
+    font-family: var(--font-hei) !important;
+    font-weight: bold;
+}
+
+/* ------------------------------------------------------------ */
+/* 3. 标题 (h1-h6) - 精确匹配 thesis-uestc.cls
+/* ------------------------------------------------------------ */
+
+/* h1 (一级标题) - 文档主标题 (这个保留较大字号) */
+h1 {
+    font-family: var(--font-hei) !important;
+    font-size: 2.375em !important; /* 38px */
+    font-weight: bold !important;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 1.5em;
+    line-height: 1.2;
+}
+
+/* h2 (二级标题) - "章" 级别 (15pt) */
+h2 {
+    font-family: var(--font-hei) !important;
+    font-size: 1.25em !important; /* 15pt / 12pt = 1.25 */
+    font-weight: bold !important;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 18pt; /* \titlespacing{\chapter} */
+    line-height: 1.3;
+}
+
+/* h3 (三级标题) - "节" 级别 (14pt) */
+h3 {
+    font-family: var(--font-hei) !important;
+    font-size: 1.167em !important; /* 14pt / 12pt = 1.167 */
+    font-weight: bold !important;
+    text-align: left;
+    margin-top: 18pt; /* \titlespacing{\section} */
+    margin-bottom: 6pt;
+}
+
+/* h4 (四级标题) - "子节" 级别 (14pt) */
+h4 {
+    font-family: var(--font-hei) !important;
+    font-size: 1.167em !important; /* 14pt / 12pt = 1.167 */
+    font-weight: bold !important;
+    text-align: left;
+    text-indent: 0;
+    margin-top: 12pt; /* \titlespacing{\subsection} */
+    margin-bottom: 6pt;
+}
+
+/* h5 (五级标题) - "子子节" 级别 (12pt) */
+h5 {
+    font-family: var(--font-hei) !important;
+    font-size: 1em !important; /* 12pt / 12pt = 1 */
+    font-weight: bold !important;
+    text-align: left;
+    text-indent: 0;
+    margin-top: 12pt; /* \titlespacing{\subsubsection} */
+    margin-bottom: 6pt;
+}
+
+/* h6 (六级标题) - 保持 12pt */
+h6 {
+    font-family: var(--font-song) !important;
+    font-weight: bold !important;
+    font-size: 1em !important;
+    text-align: left !important;
+    text-indent: 0;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+
+/* 移除标题前的默认编号 */
+h1::before,
+h2::before,
+h3::before,
+h4::before,
+h5::before,
+h6::before {
+    content: none;
+}
+
+/* ------------------------------------------------------------ */
+/* 4. 列表 (Lists)
+/* ------------------------------------------------------------ */
+
+ul,
+ol {
+    font-family: var(--font-song) !important;
+    font-size: 1em;
+    line-height: var(--line-height-body);
+    margin: 1em 0px;
+    padding-left: 2.5em; /* 保持与段落的对齐感 */
+}
+
+li {
+    margin-bottom: 0.5em;
+}
+
+li p {
+    text-indent: 0 !important; /* 列表项内的段落不首行缩进 */
+    margin-bottom: 0.5em;
+}
+
+/* ------------------------------------------------------------ */
+/* 5. 表格 (Tables) - 模拟 booktabs 三线表
+/* ------------------------------------------------------------ */
+
+.markdown-preview-view table {
+    width: auto; /* 内容决定宽度 */
+    margin-top: 9pt; /* 匹配 \captionsetup[table]{aboveskip=9pt} */
+    margin-bottom: 1.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    font-size: var(
+        --font-small-size
+    ); /* 10.5pt (来自 \AtBeginEnvironment{tabular}{\small}) */
+
+    /* \heavyrulewidth{0.9pt} ≈ 1.2px, 用 1.5px 或 2px 视觉效果更佳 */
+    border-top: 1.5px solid #000;
+    border-bottom: 1.5px solid #000;
+}
+
+.markdown-preview-view td,
+.markdown-preview-view th {
+    border: none; /* 移除所有内部边框 */
+    padding: 8px 12px;
+    background-color: transparent !important;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.markdown-preview-view th {
+    /* \lightrulewidth{0.5pt} ≈ 0.7px, 用 1px */
+    border-bottom: 1px solid #000;
+    font-family: var(--font-hei);
+    font-weight: bold;
+}
+
+/* 移除默认的斑马条纹背景 */
+.theme-light .markdown-preview-view tr:nth-child(odd),
+.theme-light .markdown-preview-view tr:nth-child(even),
+.theme-dark .markdown-preview-view tr:nth-child(odd),
+.theme-dark .markdown-preview-view tr:nth-child(even) {
+    background-color: transparent !important;
+}
+
+/* ------------------------------------------------------------ */
+/* 6. 图像 (Images) & 图表标题
+/* ------------------------------------------------------------ */
+
+.image-embed,
+.internal-embed {
+    display: block;
+    text-align: center;
+    margin-top: 9pt; /* 模拟 \intextsep{9pt} */
+    margin-bottom: 9pt;
+}
+
+.image-embed img,
+.internal-embed img {
+    max-width: 80%; /* 限制图片最大宽度 */
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 图表注脚 (caption) (10.5pt) */
+.image-embed .markdown-embed-link,
+.image-embed > .markdown-embed-link,
+.markdown-preview-view .image-embed > span {
+    display: block;
+    text-align: center;
+    font-family: var(--font-song);
+    font-size: var(
+        --font-small-size
+    ); /* 10.5pt (来自 \captionsetup[font=small]) */
+    color: #555;
+    margin-top: 6pt; /* 模拟 \captionsetup[figure]{aboveskip=6pt} */
+    padding: 0 42pt; /* 模拟 width=\textwidth - 84pt */
+    line-height: 1.3;
+}
+
+/* ------------------------------------------------------------ */
+/* 7. 引用 (Blockquotes)
+/* ------------------------------------------------------------ */
+
+blockquote {
+    font-family: var(--font-kai) !important;
+    border-left: 3px solid #ccc !important;
+    padding: 0.5em 1em;
+    margin: 1.5em 0;
+    color: #5f5f5f;
+}
+
+.theme-dark blockquote {
+    color: #a1a1a1;
+    border-left-color: #555 !important;
+}
+
+blockquote p {
+    font-family: inherit !important; /* 继承楷体 */
+    text-indent: 0 !important;
+    margin-bottom: 0.5em;
+}
+
+blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+/* ------------------------------------------------------------ */
+/* 8. 脚注 (Footnotes) - 模拟论文格式 (9pt)
+/* ------------------------------------------------------------ */
+
+/* 正文中的脚注引用上标 */
+.footnote-link {
+    color: #000000 !important;
+    font-size: 0.8em !important;
+    font-weight: bold;
+    text-decoration: none !important;
+    vertical-align: super;
+    line-height: 1 !important;
+}
+
+/* 脚注区域 */
+section.footnotes {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: none; /* 移除默认的hr */
+}
+
+/* 隐藏原始的 <hr> */
+section.footnotes hr {
+    display: none !important;
+}
+
+/* 自定义脚注分隔线 (精确匹配 \footnoterule) */
+section.footnotes::before {
+    content: "";
+    display: block;
+    width: 5.05cm; /* LaTeX \rule{5.05cm} */
+    height: 0.5px; /* LaTeX \rule{0.02cm} */
+    background-color: #000;
+    margin-left: 27pt; /* LaTeX \hspace{27pt} */
+    margin-bottom: 10px; /* 模拟 \vspace */
+}
+
+.theme-dark section.footnotes::before {
+    background-color: #ccc;
+}
+
+/* 脚注列表 */
+.markdown-preview-view .footnotes ol {
+    counter-reset: footnote-counter;
+    padding-left: 0;
+    margin-left: 27pt; /* 与分隔线对齐 */
+}
+
+/* 脚注列表项 (9pt) */
+.markdown-preview-view .footnotes ol li {
+    display: flex;
+    align-items: baseline;
+    list-style-type: none !important;
+    font-family: var(--font-song) !important;
+    font-size: var(--font-footnote-size); /* 9pt (来自 \footnotelayout) */
+    line-height: 1.3; /* 11.7pt / 9pt = 1.3 */
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 0;
+    text-indent: 0;
+}
+
+/* 脚注编号样式 */
+.markdown-preview-view .footnotes ol li::before {
+    content: "[" counter(footnote-counter) "] ";
+    counter-increment: footnote-counter;
+    font-weight: normal;
+    color: #000000;
+    margin-right: 0.5em;
+    flex-shrink: 0;
+}
+
+.theme-dark .markdown-preview-view .footnotes ol li,
+.theme-dark .markdown-preview-view .footnotes ol li::before {
+    color: #ccc;
+}
+
+/* 脚注内容中的段落 */
+.markdown-preview-view .footnotes ol li p {
+    display: inline; /* 使其与编号在同一行内流动 */
+    margin: 0 !important;
+    padding: 0 !important;
+    text-indent: 0 !important;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+/* 隐藏返回原文的箭头 */
+.footnote-return,
+a.footnote-backref {
+    display: none !important;
+}
+
+/* ------------------------------------------------------------ */
+/* 9. 其他 (Code, Links, HR)
+/* ------------------------------------------------------------ */
+
+/* 普通链接 */
+.markdown-preview-view a:not(.footnote-link) {
+    color: #0e639c !important;
+    text-decoration: none !important;
+    font-family: var(--font-song);
+}
+
+.markdown-preview-view a:hover {
+    text-decoration: underline !important;
+}
+
+.theme-dark .markdown-preview-view a:not(.footnote-link) {
+    color: #4a90e2 !important;
+}
+
+/* 代码块 */
+pre {
+    border: solid 1px #ddd;
+    padding: 1em;
+    line-height: 1.4;
+    font-size: 0.9em;
+    margin: 1.5em 0;
+    background-color: #f8f8f8 !important;
+    text-shadow: none !important;
+}
+
+.theme-dark pre {
+    border-color: #444;
+    background-color: #222 !important;
+}
+
+code[class*="language-"] {
+    text-shadow: none !important;
+}
+
+/*行内代码*/
+code {
+    background-color: #eee !important;
+    color: #333 !important;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 0.9em;
+    font-family: monospace;
+    text-shadow: none !important;
+}
+
+.theme-dark code {
+    background-color: #444 !important;
+    color: #ddd !important;
+}
+
+/* 水平分割线 */
+.markdown-preview-view hr {
+    border: none;
+    border-top: 1px solid #000;
+    margin: 2em auto;
+}
+
+.theme-dark .markdown-preview-view hr {
+    border-color: #555;
+}

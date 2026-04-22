@@ -1,0 +1,20 @@
+{
+  "promptDelete": false,
+  "showIndentGuide": false,
+  "newFileLocation": "current",
+  "attachmentFolderPath": "assets",
+  "alwaysUpdateLinks": true,
+  "pdfExportSettings": {
+    "includeName": false,
+    "pageSize": "A4",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  },
+  "spellcheck": true,
+  "readableLineLength": true,
+  "vimMode": false,
+  "showLineNumber": false,
+  "smartIndentList": true,
+  "strictLineBreaks": false
+}
