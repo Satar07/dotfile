@@ -1,0 +1,192 @@
+{
+    "helix_mode": false,
+    "indent_guides": {
+        "background_coloring": "disabled",
+        "coloring": "indent_aware"
+    },
+    "toolbar": {
+        "code_actions": false,
+        "agent_review": true,
+        "selections_menu": true,
+        "quick_actions": true,
+        "breadcrumbs": true
+    },
+    "minimap": {
+        "show": "never"
+    },
+    "relative_line_numbers": "disabled",
+    "collaboration_panel": {
+        "button": false
+    },
+    "project_panel": {
+        "sort_mode": "mixed",
+        "hide_hidden": false,
+        "hide_root": false,
+        "entry_spacing": "comfortable"
+    },
+    "cursor_blink": false,
+    "sticky_scroll": {
+        "enabled": true
+    },
+    "show_signature_help_after_edits": true,
+    "colorize_brackets": true,
+    "vim_mode": false,
+    "git_panel": {
+        "tree_view": false,
+        "sort_by_path": false
+    },
+    "languages": {
+        "Python": {
+            "language_servers": ["ty"],
+            "format_on_save": "on"
+        }
+    },
+    "lsp": {
+        "basedpyright": {
+            "settings": {
+                "python": {
+                    "pythonPath": ".venv/bin/python"
+                },
+                "basedpyright.analysis": {
+                    "reportMissingTypeStubs": false,
+                    "typeCheckingMode": "standard"
+                }
+            }
+        },
+        "rust-analyzer": {
+            "initialization_options": {
+                "check": {
+                    "command": "clippy" // rust-analyzer.check.command (default: "check")
+                }
+            }
+        }
+    },
+    "edit_predictions": {
+        "provider": "copilot",
+        "mode": "subtle",
+        "copilot": {
+            "proxy": null,
+            "proxy_no_verify": null,
+            "enterprise_uri": null
+        },
+        "enabled_in_text_threads": false
+    },
+    "ssh_connections": [
+        {
+            "host": "emu_ubuntu",
+            "args": [],
+            "projects": [
+                {
+                    "paths": [
+                        "/home/cyril"
+                    ]
+                },
+                {
+                    "paths": [
+                        "/home/cyril/dev"
+                    ]
+                },
+                {
+                    "paths": [
+                        "/home/cyril/dev/learn/rust/edbgserver"
+                    ]
+                },
+                {
+                    "paths": [
+                        "/home/cyril/dev/learn/rust/edbgserver/./"
+                    ]
+                },
+                {
+                    "paths": [
+                        "/home/cyril/dev/learn/rust/learn_bpf/./"
+                    ]
+                },
+                {
+                    "paths": [
+                        "/home/cyril/dev/school/hw3/./"
+                    ]
+                },
+                {
+                    "paths": [
+                        "/home/cyril/repo/aya/./"
+                    ]
+                },
+                {
+                    "paths": [
+                        "/home/cyril/repo/gdbstub/./"
+                    ]
+                },
+                {
+                    "paths": [
+                        "/home/cyril/repo/local_aya_source"
+                    ]
+                }
+            ]
+        },
+        {
+            "host": "kali_x64",
+            "args": [],
+            "projects": [
+                {
+                    "paths": [
+                        "/home/cyril/dev/linux_CTF/ciscn2026/EzFlag_248f149404428676e6aa45e6312d069c"
+                    ]
+                }
+            ]
+        },
+        {
+            "host": "ubuntu_x64",
+            "args": [],
+            "projects": []
+        }
+    ],
+    "format_on_save": "off",
+    "inlay_hints": {
+        "show_value_hints": true,
+        "enabled": true
+    },
+    "agent": {
+        "inline_assistant_model": {
+            "provider": "copilot_chat",
+            "model": "gpt-4.1"
+        },
+        "default_profile": "write",
+        "default_model": {
+            "enable_thinking": false,
+            "provider": "deepseek",
+            "model": "deepseek-reasoner"
+        }
+    },
+    "icon_theme": {
+        "mode": "system",
+        "light": "Catppuccin Latte",
+        "dark": "Catppuccin Mocha"
+    },
+    "ui_font_size": 15,
+    "buffer_font_size": 13,
+    "theme": {
+        "mode": "system",
+        "light": "Catppuccin Latte",
+        "dark": "Catppuccin Mocha"
+    },
+    "buffer_font_family": "JetBrains Mono",
+    "tab_size": 4,
+    "git": {
+        "inline_blame": {
+            "enabled": false
+        }
+    },
+    "diagnostics": {
+        "inline": {
+            "enabled": true
+        }
+    },
+    "autosave": "off",
+    "terminal": {
+        "dock": "right",
+        "toolbar": {
+            "breadcrumbs": false
+        }
+    },
+    "extend_comment_on_newline": false
+}
